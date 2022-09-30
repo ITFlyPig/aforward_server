@@ -15,7 +15,7 @@ func main() {
 
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	l, err := net.Listen("tcp", ":9000")
+	l, err := net.Listen("tcp", ":9100")
 	if err != nil {
 		log.Panic(err)
 	}
@@ -56,7 +56,7 @@ func handleClientRequest(client net.Conn) {
 
 	if hostPortURL.Opaque == "443" { //https访问
 		address = hostPortURL.Scheme + ":443"
-	} else { //http访问
+	} else {                                            //http访问
 		if strings.Index(hostPortURL.Host, ":") == -1 { //host不带端口， 默认80
 			address = hostPortURL.Host + ":80"
 		} else {

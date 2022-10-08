@@ -68,8 +68,11 @@ func handleClientRequest(client net.Conn) {
 	server, err := net.Dial("tcp", address)
 	if err != nil {
 		log.Println(err)
+		fmt.Printf("dial error，err:%v", err)
 		return
 	}
+
+	fmt.Printf("address:%v 连接建立成功", address)
 
 	if method == "CONNECT" {
 		fmt.Fprint(client, "HTTP/1.1 200 Connection established\r\n")
